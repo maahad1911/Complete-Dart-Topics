@@ -1,54 +1,90 @@
 void main() {
-  var results = main2();
+  Student student1 = Student();
+  student1.name = "Areeba";
+  student1.address = "Lahore";
+  student1.age = 20;
+  student1.grade = 8;
+  student1.cgpa = 2.2;
+  student1.printStudentInfo();
 
-  int choice = 7; // 0 = Add, 1 = Subtract, 2 = Divide, 3 = Multiply
+  print("             ");
+  print("             ");
 
-  if (choice == 0) {
-    print("The Value of ${results[0]}");
-  } else if (choice == 1) {
-    print("The Value of ${results[1]}");
-  } else if (choice == 2) {
-    print("The Value of ${results[2]}");
-  } else if (choice == 3) {
-    print("The Value of ${results[3]}");
-  } else {
+  Teacher teacher1 = Teacher("ILMA University", 1);
+  teacher1.name = "Rana Faisal";
+  teacher1.age = 42;
+  teacher1.address = "Karachi";
+  teacher1.printTeacherInfo();
+}
+
+///----------------------------------------------------///
+///---------------------- Person ----------------------///
+class Person {
+  String? name;
+  String? address;
+  int? age;
+
+  // Default constructor (no arguments)
+  Person();
+
+  void printPersonInfo() {
     print(
-      "Something went wrong,Your giving value is $choice please enter a correct value",
+      "Thankyou so much $name for login -- Please check your details -- Address : $address -- Age : $age.",
     );
+    print("-----------");
   }
 }
 
-dynamic main2() {
-  var obj = Methmatics();
+///----------------------------------------------------///
+///---------------------- Student ---------------------///
+class Student extends Person {
+  late int grade;
+  late double cgpa;
 
-  List<dynamic> result = [
-    "Addition : ${obj.add(num1: 10, num2: 20)}",
-    "Subtraction : ${obj.subtract(num1: 10, num2: 2)}",
-    "Division : ${obj.divide(10, 5)}",
-    "Multiplicaion : ${obj.multiply(6, 4)}",
-  ];
-  return result;
+  // Default constructor (no super needed)
+  Student();
+
+  void printStudentInfo() {
+    printPersonInfo(); // calling method from Person
+
+    if (grade >= 5) {
+      if (cgpa >= 2.8) {
+        print(
+          "Your grade is $grade and your CGPA is $cgpa please complete furthur details",
+        );
+      } else {
+        print(
+          "Unfortunately your grade is in eligibility crieteria but your CGPA is not enough for this program",
+        );
+      }
+    } else {
+      print(
+        "Your grade is $grade but you are eligible for this prgram due to your grade",
+      );
+    }
+  }
 }
 
-class Methmatics {
-  int add({int? num1, int? num2}) {
-    var abc = (num1 ?? 0) + (num2 ?? 0);
-    return abc;
-  }
+///----------------------------------------------------///
+///---------------------- Teacher ---------------------///
+class Teacher extends Person {
+  late String organization;
+  late int service;
 
-  int subtract({int? num1, int? num2}) {
-    var abc = (num1 ?? 0) - (num2 ?? 0);
-    return abc;
-  }
+  Teacher(this.organization, this.service);
 
-  double divide(int num1, int num2) {
-    var abc = num1 / num2;
-    return abc;
-  }
+  void printTeacherInfo() {
+    printPersonInfo();
 
-  // It is required parameter //
-  int multiply(int num1, int num2) {
-    var abc = num1 * num2;
-    return abc;
+    if (service >= 3) {
+      print(
+        "Thankyou so much for login Dear Sir/Mam $name. Please check your Organization : $organization.",
+      );
+      print("Please take your seat we will contact you");
+    } else {
+      print(
+        "We are really sorry Dear Sir/Mam $name. Your service is not enough for this Program",
+      );
+    }
   }
 }

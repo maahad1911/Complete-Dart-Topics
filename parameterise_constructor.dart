@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 void main() {
-  //here is ging values to constructor//
+  //here is givng values to constructor//
   Student obj = Student("Mahad", 19);
   obj.infoStatus();
 
