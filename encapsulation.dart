@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 void main() {
   Person person = Person();
   person.displayInfo();

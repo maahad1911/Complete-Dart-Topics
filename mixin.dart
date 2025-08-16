@@ -3,7 +3,7 @@ void main() {
   person.displayInfo();
 }
 
-class Person with logger {
+class Person with logger , validation {
   String email, password;
 
   Person(this.email, this.password);
